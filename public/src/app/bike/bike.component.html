@@ -1,0 +1,8 @@
+<div class="border-bottom">
+<!-- <h2>Hello {{user?.first_name}} {{user?.last_name}}</h2> -->
+<h2>Hello {{user?.first_name}}</h2>
+<a class="btn btn-primary" [routerLink]="['/','bike','browse']">Items available in the market</a>
+<a class="btn btn-primary" [routerLink]="['/','bike','listing']">My items on sale</a>
+<button class="btn btn-danger" (click)="logout()">Log Off</button>
+</div>
+<router-outlet></router-outlet>

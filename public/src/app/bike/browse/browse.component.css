@@ -1,0 +1,18 @@
+.list{
+    overflow: scroll;
+    height: 600px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+img{
+    background-image: url(https://www.striderbikes.com/l/assets/img/index/progression-3.jpg);
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+#search {
+    height: 30px;
+    width: 400px;
+}

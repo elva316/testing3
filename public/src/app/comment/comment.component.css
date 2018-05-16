@@ -1,0 +1,11 @@
+img{
+    background-image: url(https://www.striderbikes.com/l/assets/img/index/progression-3.jpg);
+    width: 200px;
+    height: 200px;
+}
+
+.border{
+    border: 2px solid black;
+    height: 220px;
+    background-color: lightblue;
+}

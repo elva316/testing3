@@ -1,0 +1,22 @@
+
+img{
+    background-color: silver ;
+    width: 200px;
+    height: 200px;
+}
+
+.bikes{
+    overflow: scroll;
+    height: 600px;
+    border: 1px solid black;
+    background-color: white;
+}
+.overflow{
+    overflow: auto;
+}
+input{
+    padding-left: 3px;
+}
+input .placeholder{
+    color: #eee;
+}

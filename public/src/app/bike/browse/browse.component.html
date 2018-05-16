@@ -1,0 +1,38 @@
+<div class="w3-dropdown-hover pull-right">
+  <button class="w3-button w3-green w3-large">Currently Login Users: {{login_users.length}}</button>
+  <div class="w3-dropdown-content w3-bar-block w3-border">
+    <span class="w3-bar-item w3-button w3-blue w3-row" *ngFor="let user of login_users" >{{user.info.first_name}} {{user.info.last_name}}</span>
+ </div>
+</div>
+ <br>
+ <h3>Search:
+<input style="width: 750px;" (keyup)="searchBike()" name="search" id="search" [(ngModel)]="new_search"></h3>
+<br>
+<br>
+
+<div class="list">
+  <div *ngIf="all_bikes" class="bikes">
+    <div *ngFor="let bike of all_bikes; let i = index" class="row well">
+      <div class="col-md-3">
+        <img src="{{bike.imgurl}}">
+        <button *ngIf="bike._user == user._id" (click)="delete(bike._id)" class="btn btn-danger">Delete</button>
+                                                                                                <!-- //  below after question mark to the end called query string  -->
+        <button *ngIf="bike._user != user._id" (click)="contact(bike._user)" class="btn btn-info"><a href="mailto:elvaword316@gmail.com?subject=Reg:ProductOnSellingTrend">Contact</a></button>
+        <button (click)="comment(bike._id)" class="btn btn-primary">Comments & Reviews</button>
+      </div>
+      <div class="col-md-6" style="word-wrap: break-word;">
+        <h3>
+          <strong> {{bike?.title}}</strong>
+        </h3>
+        <p class="font-italic">Details: {{bike?.desc}}</p>
+      </div>
+      <div class="col-md-3">
+        <h3>
+          <strong>Price: {{bike?.price}}</strong>
+        </h3>
+        <p>Location: {{bike?.location}}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

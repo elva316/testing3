@@ -1,0 +1,122 @@
+<div class="">
+
+
+    <h3 class="text-primary">Deal of the day!</h3>
+    <div class="row well">
+        <div class="col-md-3">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="{{bike?.imgurl}}" alt="">
+        </div>
+        <div class="col-md-6">
+          <h2><strong style="color: darkblue"> {{bike?.title}}</strong></h2>
+          <p class="font-italic" style="word-wrap: break-word;" >Details: {{bike?.desc}}</p>
+        </div>
+        <div class="col-md-3">
+            <h3><strong>Price: {{bike?.price}}</strong></h3>
+            <p>Location: {{bike?.location}}</p>
+        </div>
+      </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="#" class="active" id="login-form-link">Login</a>
+            </div>
+            <div class="col-xs-6">
+              <a href="#" id="register-form-link">Register</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+      <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+      <form (submit)="login(form)" #formData2="ngForm" id="login-form" role="form" style="display: block;">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" [(ngModel)]="login_user.email" required pattern="[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]*\.([a-z]{2,4})"
+            #login_email="ngModel" class="form-control" name="email">
+        </div>
+        <!-- {{login_email.errors | json}} -->
+        <div class="alert alert-warning" *ngIf="login_email.invalid && (login_email.dirty || login_email.touched)">
+              <strong>Warning! Invalid Email Format!! </strong>
+        </div>
+
+
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" [(ngModel)]="login_user.password" required minlength="5" #login_password="ngModel" class="form-control"
+            name="pwd">
+        </div>
+        <!-- {{login_password.errors | json}} -->
+        <div class="alert alert-warning" *ngIf="login_password.invalid && (login_password.dirty || login_password.touched)">
+              <strong>Warning! Password minimum length is 5 charactors!!!</strong>
+        </div>
+        <br>
+        <h3 class="text-danger" *ngIf="err_message.login != ''">{{err_message.login}}</h3>
+        <button type="submit" [disabled]="!formData2.valid" class="btn btn-info">Login</button>
+      </form>
+
+
+
+      <form (submit)="create()" #formData1="ngForm" id="register-form" role="form" style="display: none;">
+        <div class="form-group">
+          <label for="first_name">First Name:</label>
+          <input type="text" [(ngModel)]="new_user.first_name" required minlength="3" #first_name="ngModel" class="form-control" name="first_name">
+        </div>
+        <!-- {{first_name.errors | json}} -->
+        <div class="alert alert-warning" *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)">
+              <strong>First name should be at least 3 charcters in length</strong>
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">Last Name:</label>
+          <input type="text" [(ngModel)]="new_user.last_name" required minlength="3" #last_name="ngModel" class="form-control" name="last_name">
+        </div>
+        <!-- {{last_name.errors | json}} -->
+        <div class="alert alert-warning" *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)">
+              <strong>Last name should be at least 3 charcters in length</strong>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" [(ngModel)]="new_user.email" required pattern="[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]*\.([a-z]{2,4})" #email="ngModel"
+            class="form-control" name="email" ng-change="emailcheck()">
+        </div>
+        <!-- {{email.errors | json}} -->
+        <div class="alert alert-warning" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <strong>Wrong email format</strong>
+        </div>
+
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" [(ngModel)]="new_user.password" required minlength="5" #password="ngModel" class="form-control" name="pwd">
+        </div>
+        <!-- {{password.errors | json}} -->
+        <div class="alert alert-warning" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <strong>Password should be at least 5 charcters in length</strong>
+        </div>
+
+        <div class="form-group">
+          <label for="pw_confirm">Password Confirmation:</label>
+          <input type="password" [(ngModel)]="pass_confir" required minlength="5" #pw_confirm="ngModel" pattern="{{new_user.password}}"
+            class="form-control" name="pw_confirm">
+        </div>
+        <!-- {{pw_confirm.errors | json}} -->
+        <div class="alert alert-warning" *ngIf="new_user.password != pass_confir && (pw_confirm.dirty || pw_confirm.touched)">
+              <strong>Password is not matching</strong>
+        </div>
+
+        <br>
+        <h3 class="text-danger" *ngIf="err_message.email != ''">{{err_message.email}}</h3>
+        <button type="submit" [disabled]="!formData1.valid" class="btn btn-primary">Register</button>
+      </form>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<h2>Create Listing</h2>
+<div class="row well" >
+  <div class="col-md-3">
+    <img src="{{new_bike.imgurl}}">
+  </div>
+  <form (submit)="create()" #formData3="ngForm" class="col-md-9" class='overflow'>
+    <strong>Image URL:</strong>
+    <input style="width: 350px;" type='file' accept=".jpg" required [(ngModel)]="new_bike.imgurl" #img="ngModel" name="image" placeholder="Url required">
+    <!-- {{img.errors | json}} -->
+    <!-- <div class="alert alert-warning" *ngIf="img.invalid && (img.dirty || img.touched)"> -->
+          <!-- <strong>Image is required</strong> -->
+    <!-- </div> -->
+    <br>
+    <strong>Title:</strong>
+    <input style="width: 400px;" type="text" required minlength="5" [(ngModel)]="new_bike.title" #title="ngModel" name="title" placeholder="At least 5 charcters">
+    <!-- {{title.errors | json}} -->
+    <!-- <div class="alert alert-warning" *ngIf="title.invalid && (title.dirty || title.touched)"> -->
+          <!-- <strong>Title should be at least 5 charcters in length</strong> -->
+    <!-- </div> -->
+    <br>
+    <strong>Price:</strong>
+    <input style="width: 400px;" type="number" required [(ngModel)]="new_bike.price" #price="ngModel" name="price" placeholder="Required">
+    <!-- {{price.errors | json}} -->
+    <!-- <div class="alert alert-warning" *ngIf="price.invalid && (price.dirty || price.touched)"> -->
+          <!-- <strong>Price is required</strong> -->
+    <!-- </div> -->
+    <br>
+    <strong>Location:</strong>
+    <input style="width: 370px;" type="text" required [(ngModel)]="new_bike.location" #location="ngModel" name="location" placeholder="Required">
+    <!-- {{location.errors | json}} -->
+    <!-- <div class="alert alert-warning" *ngIf="location.invalid && (location.dirty || location.touched)"> -->
+          <!-- <strong>Location is required</strong> -->
+    <!-- </div> -->
+    <br>
+    <strong>Description/Detail:</strong>
+    <br>
+    <textarea rows="3" cols="75" required [(ngModel)]="new_bike.desc" #desc="ngModel" name="desc" placeholder="Required"></textarea>
+    <!-- {{desc.errors | json}} -->
+    <br>
+    <!-- <div class="alert alert-warning" *ngIf="desc.invalid && (desc.dirty || desc.touched)" > -->
+          <!-- <strong>Description is required</strong> -->
+    <!-- </div> -->
+    <button type="submit"  class="btn btn-info">Create</button>
+    <!-- <button type="submit" [disabled]="!formData3.valid" class="btn btn-info">Create</button> -->
+
+  </form>
+</div>
+<br>
+
+    <!-- .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . -->
+<div class="row">
+    <!-- my_bikes {{ my_bikes }} -->
+  <h2>Edit/Delete My Items</h2>
+  <div *ngIf="my_bikes" class="bikes">
+    <div *ngFor="let bike of my_bikes; let i = index" class="row well">
+        <!-- BIKE:: {{ bike }} -->
+      <div class="col-md-3 text-center">
+        <img src="{{bike.imgurl}}">
+        <button (click)="delete(bike._id)" class="btn btn-danger">Delete</button>
+      </div>
+      <div class="col-md-9">
+        <form (submit)="update(bike._id, bike)" #formData4="ngForm" >
+          <strong>Image URL:</strong>
+          <input style="width: 350px;" type='url' required [(ngModel)]="bike.imgurl" #img="ngModel" name="image">
+
+          <br>
+          <strong>Title:</strong>
+          <input style="width: 400px;" type="text" required minlength="5" [(ngModel)]="bike.title" #title="ngModel" name="title">
+
+          <br>
+          <strong>Price:</strong>
+          <input style="width: 400px;" type="number" required min="5" [(ngModel)]="bike.price" #price="ngModel" name="price">
+
+          <br>
+          <strong>Location:</strong>
+          <input style="width: 370px;" type="text" required [(ngModel)]="bike.location" #location="ngModel" name="location">
+
+          <br>
+          <strong>Description:</strong>
+          <br>
+          <textarea rows="3" cols="75" required min='10' [(ngModel)]="bike.desc" #desc="ngModel" name="desc"></textarea>
+
+          <br>
+          <button type="submit" [disabled]="!formData4.valid" class="btn btn-info">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
