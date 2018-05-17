@@ -1,14 +1,14 @@
 
-var express = require("express");
-var path = require("path");
-var app = express();
-var bodyParser = require("body-parser");
-var session = require('express-session');
-var port = process.env.PORT || 8000;
-var server = app.listen(port, function() {
+const express = require("express");
+const path = require("path");
+const app = express();
+const bodyParser = require("body-parser");
+const session = require('express-session');
+const port = process.env.PORT || 8000;
+const server = app.listen(port, function() {
     console.log("listening on port 8000");
    });
-var io = require('socket.io').listen(server);
+const io = require('socket.io').listen(server);
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, './public/dist')));
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);
 
-var users = [];
+const users = [];
 io.sockets.on('connection', function (socket) {
     console.log("Client/socket is connected!");
     console.log("Client/socket id is: ", socket.id);

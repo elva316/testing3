@@ -3,7 +3,7 @@ var path = require('path');
 
 var fs = require('fs');
 
-mongoose.connect('mongodb://localhost/bikes');
+mongoose.connect('mongodb://localhost/ThriftShop');
 
 var models_path = path.join(__dirname, './../models');
 

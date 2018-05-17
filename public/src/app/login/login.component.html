@@ -64,20 +64,20 @@
       <form (submit)="create()" #formData1="ngForm" id="register-form" role="form" style="display: none;">
         <div class="form-group">
           <label for="first_name">First Name:</label>
-          <input type="text" [(ngModel)]="new_user.first_name" required minlength="3" #first_name="ngModel" class="form-control" name="first_name">
+          <input type="text" [(ngModel)]="new_user.first_name" required minlength="2" #first_name="ngModel" class="form-control" name="first_name">
         </div>
         <!-- {{first_name.errors | json}} -->
         <div class="alert alert-warning" *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)">
-              <strong>First name should be at least 3 charcters in length</strong>
+              <strong>First name should be at least 2 charcters in length</strong>
         </div>
 
         <div class="form-group">
           <label for="last_name">Last Name:</label>
-          <input type="text" [(ngModel)]="new_user.last_name" required minlength="3" #last_name="ngModel" class="form-control" name="last_name">
+          <input type="text" [(ngModel)]="new_user.last_name" required minlength="2" #last_name="ngModel" class="form-control" name="last_name">
         </div>
         <!-- {{last_name.errors | json}} -->
         <div class="alert alert-warning" *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)">
-              <strong>Last name should be at least 3 charcters in length</strong>
+              <strong>Last name should be at least 2 charcters in length</strong>
         </div>
 
         <div class="form-group">
