@@ -4,7 +4,8 @@ var path = require("path");
 var app = express();
 var bodyParser = require("body-parser");
 var session = require('express-session');
-var server = app.listen(8000, function() {
+var port = process.env.PORT || 8000;
+var server = app.listen(port, function() {
     console.log("listening on port 8000");
    });
 var io = require('socket.io').listen(server);
